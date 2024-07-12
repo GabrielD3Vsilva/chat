@@ -20,7 +20,7 @@ app.use(cors({
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "https://diasemterapia.com.br/talk",
         methods: ["GET", "POST"]
     }
 });
@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
         const usersInRoom = users.find(user=>user.userName === data.userName && user.room === data.room);
 
         if(usersInRoom) {
-            usersInRoom.id == socket.id;
+            usersInRoom.id = socket.id;
         } else {
             users.push({
                 id: socket.id,
