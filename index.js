@@ -13,6 +13,11 @@ const io = new Server(server, {
     }
 });
 
+app.use(cors({
+    origin: "https://diasemterapia.com.br/talk",
+    methods: ["GET", "POST"]
+}));
+
 const users = [];
 const messages = [];
 
