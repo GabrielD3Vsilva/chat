@@ -8,7 +8,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://diasemterapia.com.br/",
+        origin: "https://diasemterapia.com.br/talk",
         methods: ["GET", "POST"]
     }
 });
