@@ -8,7 +8,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://diasemterapia.com.br",
+        origin: "http://localhost:5173",
         methods: ["GET", "POST"]
     }
 });
@@ -56,8 +56,6 @@ io.on('connection', (socket) => {
         io.to(data.room).emit('message', message);
         
     })
-
-
 });
 
 function getMessagesInRoom (room) {
