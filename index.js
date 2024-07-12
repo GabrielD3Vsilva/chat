@@ -5,7 +5,7 @@ const cors = require('cors');
 app.use(cors( ));
 
 app.use(cors({
-    origin: "https://diasemterapia.com.br/talk",
+    origin: "https://diasemterapia.com.br",
     methods: ["GET", "POST"]
 }));
 
@@ -15,7 +15,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://diasemterapia.com.br/talk",
+        origin: "https://diasemterapia.com.br",
         methods: ["GET", "POST"]
     }
 });
