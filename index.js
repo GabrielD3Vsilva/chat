@@ -4,22 +4,18 @@ const app = require('express')();
 const cors = require('cors');
 app.use(cors( ));
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+app.use(cors({
+    origin: "https://diasemterapia.com.br/talk",
+    methods: ["GET", "POST"]
+}));
+
 
 const server = createServer(app);
 
-const io = new Server(server, {
-    cors: {
-        origin: "https://diasemterapia.com.br/talk",
-        methods: ["GET", "POST"]
-    }
-});
+app.use(cors({
+    origin: "https://diasemterapia.com.br/talk",
+    methods: ["GET", "POST"]
+}));
 
 const users = [];
 const messages = [];
