@@ -25,6 +25,7 @@ const UserSchema = mongoose.Schema(
         vip: Boolean,
         list: [String],
         Messages: [ListItemSchema],
+        Rates: [String]
     }
 )
 
