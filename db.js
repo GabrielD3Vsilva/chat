@@ -4,6 +4,13 @@ mongoose.connect("mongodb+srv://Gab:1981abcd.@tableusers.2aqijpr.mongodb.net/")
 .then(( )=>console.log('mongoDb Connected'))
 .catch((error)=>console.log(error));
 
+const ListItemSchema = new mongoose.Schema({
+    userName: String,
+    text: String,
+    room: String
+});
+
+
 const UserSchema = mongoose.Schema(
     {
         name: String,
@@ -17,7 +24,7 @@ const UserSchema = mongoose.Schema(
         number: Number,
         vip: Boolean,
         list: [String],
-        Messages: [String],
+        Messages: [ListItemSchema],
     }
 )
 
