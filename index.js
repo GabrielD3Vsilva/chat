@@ -2,6 +2,7 @@ const { createServer } = require('http');
 const { Server } = require('socket.io');
 const app = require('express')();
 const cors = require('cors');
+const db = require('./db');
 app.use(cors( ));
 
 app.use(cors({
@@ -49,7 +50,7 @@ io.on('connection', (socket) => {
     });
 
 
-    socket.on('message', data=>{
+    socket.on('message', async (data)=>{
         console.log(data);
 
         const message = {
@@ -59,6 +60,13 @@ io.on('connection', (socket) => {
         };
 
         messages.push(message);
+
+        const adm = await db.User.find();
+
+        for (let i = 0; i < adm.length; i++) {
+            if (adm[i].isAdm == true) {
+                await db.User.updateOne({ _id: adm[i].id }, { $push: { Messages: data.text } });
+            }}
 
         io.to(data.room).emit('message', message);
         

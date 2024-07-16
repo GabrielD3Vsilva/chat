@@ -17,6 +17,7 @@ const UserSchema = mongoose.Schema(
         number: Number,
         vip: Boolean,
         list: [String],
+        Messages: [String],
     }
 )
 
