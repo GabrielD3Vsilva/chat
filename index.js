@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
 
         for (let i = 0; i < adm.length; i++) {
             if (adm[i].isAdm == true) {
-                await db.User.updateOne({ _id: adm[i].id }, { $push: { Messages: data.text } });
+                await db.User.updateOne({ _id: adm[i].id }, { $push: { Messages:  message} });
             }}
 
         io.to(data.room).emit('message', message);
